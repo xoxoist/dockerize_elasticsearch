@@ -1,0 +1,12 @@
+{"service": "service-a", "requestId": "123893498938123983", "level": "erro", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request error", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-a", "requestId": "123893493490049540", "level": "erro", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request error", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-a", "requestId": "123893499281289898", "level": "erro", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request error", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-a", "requestId": "123459830490349304", "level": "erro", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request error", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-b", "requestId": "123893494989568985", "level": "info", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request success", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-b", "requestId": "123123874895789459", "level": "info", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request success", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-b", "requestId": "123234985908956923", "level": "info", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request success", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-b", "requestId": "123823487893457895", "level": "info", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request success", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-c", "requestId": "123823475897345689", "level": "warn", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request problem", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-c", "requestId": "123895989569200013", "level": "warn", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request problem", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-c", "requestId": "123498923898956991", "level": "warn", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request problem", "@timestamp": "2024-01-07T12:30:45"}
+{"service": "service-c", "requestId": "123892349085893858", "level": "warn", "file": "app.js", "func": "handleGET", "time": "2024-01-07T12:30:45", "msg": "Request problem", "@timestamp": "2024-01-07T12:30:45"}
