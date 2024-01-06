@@ -1,0 +1,106 @@
+version: '3.3'
+services:
+  elasticsearch:
+    image: elasticsearch:7.5.0
+    container_name: elasticsearch
+    env_file:
+      - ./environment/elasticsearch.env
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    stdin_open: true
+    tty: true
+    network_mode: bridge
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "50"
+
+  kibana:
+    image: kibana:7.5.0
+    container_name: kibana
+    volumes:
+      - ./volume/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "5601:5601"
+    links:
+      - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch
+    stdin_open: true
+    tty: true
+    network_mode: bridge
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "50"
+
+  logstash:
+    image: logstash:7.5.0
+    container_name: logstash
+    env_file:
+      - ./environment/logstash.env
+    volumes:
+      - ./volume/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./volume/logstash/logstash.template.json:/usr/share/logstash/templates/logstash.template.json
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "5044:5044"
+    links:
+      - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch
+    stdin_open: true
+    tty: true
+    network_mode: bridge
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "50"
+
+  filebeat:
+    user: root
+    image: docker.elastic.co/beats/filebeat:7.5.0
+    container_name: filebeat
+    volumes:
+      - /var/run/docker.sock:/host_docker/docker.sock
+      - /var/lib/docker:/host_docker/var/lib/docker
+      - ./xlog:/usr/share/filebeat/logfiles
+      - ./volume/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+    command: [ "--strict.perms=false" ]
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    links:
+      - logstash:logstash
+    depends_on:
+      - logstash
+    stdin_open: true
+    tty: true
+    network_mode: bridge
+    deploy:
+      mode: global
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "50"
+
+networks:
+  api_network:
+    driver: bridge

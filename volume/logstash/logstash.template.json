@@ -1,0 +1,37 @@
+{
+    "template": "logstash",
+    "index_patterns": [
+        "logstash-*"
+    ],
+    "settings": {
+        "number_of_shards": 1
+    },
+    "mappings": {
+        "properties": {
+            "service": {
+                "type": "keyword"
+            },
+            "requestId": {
+                "type": "keyword"
+            },
+            "level": {
+                "type": "keyword"
+            },
+            "file": {
+                "type": "keyword"
+            },
+            "func": {
+                "type": "keyword"
+            },
+            "time": {
+                "type": "keyword"
+            },
+            "msg": {
+                "type": "keyword"
+            },
+            "@timestamp": {
+                "type": "date"
+            }
+        }
+    }
+}

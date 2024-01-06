@@ -1,0 +1,19 @@
+# filebeat input source
+# this source will be presented
+# to kibana through logstash
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /usr/share/filebeat/logfiles/*.log
+
+# filebeat output log
+# tell filebeat to use
+# logstash inside docker
+output.logstash:
+  hosts: ["logstash:5044"]
+
+# filebeat docker processor
+processor:
+  - add_docker_metadata:
+      hosts: "unix:///host_docker/docker.sock"
